@@ -1,25 +1,16 @@
 <?php
-// Dabūt datus no datu bāzes un izvadīt tos HTML
-require "functions.php";
-$config = require "config.php";
-require "Database.php";
 
+echo "hi";
 
-$db = new Database($config);
+$url = parse_url($_SERVER["REQUEST_URI"])["path"];
+// dd($_SERVER["REQUEST_URI"]);
 
-$query_string = "SELECT * FROM posts";
-$params = [];
-if (isset($_GET["id"]) && $_GET["id"] != "") {
-  // .= paņem iepriekšējo vērtību un pieliek WHERE klāt ❤️
-  $query_string .= " WHERE id=:id";
-  $params[":id"] = $_GET["id"];
+if ($url == "/") {
+    require "controllers/index.php";
 }
-
-if (isset($_GET["category"]) && $_GET["category"] != "") {
-  // .= paņem iepriekšējo vērtību un pieliek WHERE klāt ❤️
-  $query_string .= " JOIN categories ON posts.category_id = categories.id WHERE categories.name=:category";
-  $params[":category"] = $_GET["category"];
+if ($url == "/about") {
+    require "controllers/about.php";
 }
-$posts = $db->execute($query_string, $params);
-
-require "views/index.view.php";
+if ($url == "/story") {
+    require "controllers/story.php";
+}
