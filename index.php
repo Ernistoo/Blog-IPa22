@@ -13,7 +13,7 @@ if (isset($_GET["id"]) && $_GET["id"] != "") {
   // .= paņem iepriekšējo vērtību un pieliek WHERE klāt ❤️
   $query_string .= " WHERE id=:id";
   $params[":id"] = $_GET["id"];
-} 
+}
 
 if (isset($_GET["category"]) && $_GET["category"] != "") {
   // .= paņem iepriekšējo vērtību un pieliek WHERE klāt ❤️
