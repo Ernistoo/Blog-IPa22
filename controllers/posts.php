@@ -4,7 +4,6 @@ require "functions.php";
 $config = require "config.php";
 require "Database.php";
 
-
 $db = new Database($config);
 
 $query_string = "SELECT * FROM posts";
@@ -22,4 +21,6 @@ if (isset($_GET["category"]) && $_GET["category"] != "") {
 }
 $posts = $db->execute($query_string, $params);
 
-require "views/index.view.php";
+$page_title = "Posts";
+
+require "views/posts.view.php";
