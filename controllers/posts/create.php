@@ -1,6 +1,6 @@
 <?php
 
-require "functions.php";
+
 require "Database.php";
 $config = require "config.php";
 $db = new Database($config);
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["title"] = "Nedrikst but mazs vai liels";
     }
 
-    $max_category_id = $db->execute("SELECT MAX(ID) FROM categories", [])[0]["MAX(ID)"];
+    $max_category_id = $db->execute("SELECT MAX(ID) FROM categories", [])->fetch()["MAX(ID)"];
     if ($_POST["category_id"] > $max_category_id) {
         $errors["category_id"] = "Nav atbilstosas kategorijas";
     }

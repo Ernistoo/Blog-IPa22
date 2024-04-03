@@ -10,7 +10,7 @@ class Database
   {
     $connection_string = "mysql:" . http_build_query($config, "", ";");
     $this->connection = new PDO($connection_string);
-    $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    // $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   }
   //Metode
   public function execute($query_string, $params)
@@ -22,6 +22,6 @@ class Database
     $query->execute($params);
 
     // 3. Saņemt datus no mySQL uz PHP un nosūtīt tālāk
-    return $query->fetchAll();
+    return $query;
   }
 }
