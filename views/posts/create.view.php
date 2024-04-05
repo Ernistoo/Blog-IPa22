@@ -5,8 +5,8 @@
     <label>
         <span>Title:</span>
         <input name="title" value="<?= $_POST["title"] ?? "" ?>" />
-        <?php if (isset($errors)) { ?>
-            <p><?= $errors["title"] ?></p>
+        <?php if (isset($errors["title"])) { ?>
+            <p><?= $errors ?></p>
         <?php } ?>
     </label>
     <label>
